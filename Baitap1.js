@@ -59,27 +59,36 @@ function guess() {
   alert("Nhập vào khoảng số cần đoán");
   const a = parseInt(prompt("Nhập cận dưới của khoảng số:"));
   const b = parseInt(prompt("Nhập cận trên của khoảng số:"));
-  let computer = parseInt(
+  const computer = parseInt(
     Math.floor(Math.random() * (b - a + 1) + a)
   );
 
   do {
     let person = parseInt(
-      prompt("Người chơi nhập vào số đoán trong khoảng trên:")
+      prompt(
+        "Người chơi nhập vào số đoán trong khoảng: (" +
+          a +
+          "-" +
+          b +
+          ")"
+      )
     );
+    console.log("ktra person 1:", person);
+    console.log("ktra computer 1:", computer);
     if (person >= a && person <= b) {
       if (computer == person) {
-        alert("Chúc mừng, Bạn đã chọn đúng số của Máy tính");
-        return alert("Cảm ơn bạn đã tham gia");
+        return alert("Chúc mừng, Bạn đã chọn đúng số của Máy tính");
+      } else if (computer > person) {
+        alert("Bạn cần chọn số lớn hơn " + person);
+        console.log("ktra person", person);
       } else {
-        if (computer > person) {
-          alert("Bạn cần chọn số lớn hơn" + person);
-        } else {
-          alert("Bạn cần chọn số nhỏ hơn" + person);
-        }
+        alert("Bạn cần chọn số nhỏ hơn " + person);
+        console.log("ktra person", person);
       }
     } else {
       alert("Bạn cần chọn số nằm trong khoảng " + a + " đến " + b);
     }
-  } while (computer == person);
+    console.log("ktra computer", computer);
+    console.log(computer != person);
+  } while (true);
 }
